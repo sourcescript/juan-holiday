@@ -1,0 +1,28 @@
+.container {
+	width: 500px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.heart {
+	color: #FF5C33;
+}
+
+.sourcescript {
+	color: #99CC00;
+	font-weight: bold;
+}
+
+.bold-heading {
+	font-weight: bold;
+}
+
+footer {
+	margin-top: 25px;
+	height: 75px;
+	padding: 25px;
+	vertical-align: middle;
+	background: rgba(0, 0, 0, 0.9);
+	color: #fff;
+	border-radius: 4px;
+}
