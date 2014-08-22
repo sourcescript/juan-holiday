@@ -2,7 +2,7 @@
 
 use Juan\Repositories\Holiday\HolidayRepository;
 
-class HolidayController extends ApiController {
+class HolidayController extends \BaseController {
 
 	/**
 	 * @var Holiday
@@ -14,27 +14,65 @@ class HolidayController extends ApiController {
 		$this->holiday = $holidayRepository;
 	}
 
-
-	function range()
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
 	{
-		$holidays = $this->holiday->getByRange(Input::get('from'), Input::get('to'));
-
-		return $this->respond($holidays);
+		return $this->respond(['data' => $this->holiday->get(Input::get('year') ?: date('Y'), Input::get('month') ?: date('m'))]);
 	}
 
 	/**
-	 * Returns holiday listing
-	 * 
-	 * @param  $year
-	 * @param  $month
-	 * @param  $day
+	 * Store a newly created resource in storage.
+	 *
 	 * @return Response
 	 */
-	function holidays($year, $month = null, $day = null)
+	public function store()
 	{
-		$holidays = $this->holiday->get($year, $month, $day);
+		$this->holiday->create(Input::get('name'), Input::get('from'), Input::get('to'), Input::get('type'));
 
-		return $this->respond($holidays);
+		return $this->setStatusCode(201)->respond(['status' => 'created']);
 	}
+
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id)
+	{
+		return $this->respond(['data' => $this->holiday->getById($id)]);
+	}
+
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($id)
+	{
+		$this->holiday->update($id, Input::get('name'), Input::get('from'), Input::get('to'), Input::get('type'));
+
+		return $this->respond(['status' => 'updated']);
+	}
+
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy($id)
+	{
+
+	}
+
 
 }
