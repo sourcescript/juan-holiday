@@ -10,12 +10,29 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-	Route::group(['prefix' => 'panel'], function()
-	{
-		Route::resource('holiday', 'HolidayController');
-	});
 
+/**
+ * Home | Documentation
+ * @link /
+ */
+Route::get('/', function()
+{
+	return View::make('doc');
+});
 
+/**
+ * @link /api/*
+ */
+Route::group(['prefix' => 'panel'], function()
+{
+	Route::resource('holiday', 'HolidayController');
+});
+
+/**
+ * @link /api/*
+ */
+Route::group(['prefix' => 'api'], function()
+{
 	Route::get('/', function()
 	{
 		return Response::make(['message' => "Welcome to JuanHoliday API!"]);
@@ -28,5 +45,4 @@
 	Route::get('{year}/{month}', 'ApiController@holidays');
 
 	Route::get('{year}/{month}/{day}', 'ApiController@holidays');
-
-
+});

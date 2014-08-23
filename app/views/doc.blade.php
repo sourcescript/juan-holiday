@@ -3,9 +3,11 @@
 <head>
 	<title> Juan Holiday API </title>
 	<meta charset="utf-8">
-	{{{ HTML::style('assets/vendor/vendor/bootstrap/dist/css/bootstrap.min.css') }}}
-	{{{ HTML::style('assets/css/stylesheet.css') }}}
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- stylesheets -->
+	<link href="/assets/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -56,7 +58,7 @@
 	</div>
 
 	<!-- scripts -->
-	{{{ HTML::script('assets/vendor/jquery/dist/jquery.min.js') }}}
-	{{{ HTML::script('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}}
+	<script src="public/assets/vendor/jquery/dist/jquery.min.js"></script>
+	<script src="public/assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
