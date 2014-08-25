@@ -21,11 +21,22 @@ Route::get('/', function()
 });
 
 /**
- * @link /api/*
+ * @link /panel/*
  */
 Route::group(['prefix' => 'panel'], function()
 {
 	Route::resource('holiday', 'HolidayController');
+
+	/**
+	 * @link /panel/
+	 */
+	Route::get('/', function() {
+		return View::make('index');
+	});
+
+	App::missing(function() {
+		return View::make('index');
+	});
 });
 
 /**

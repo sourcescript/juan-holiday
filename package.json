@@ -1,0 +1,38 @@
+{
+  "name": "juan-holiday",
+  "version": "0.0.0",
+  "description": "[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework) [![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework) [![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework) [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework) [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browserify": "~5.10.1",
+    "vinyl-source-stream": "~0.1.1",
+    "gulp-concat": "~2.3.4",
+    "gulp": "~3.8.7",
+    "gulp-uglify": "~0.3.1",
+    "karma": "~0.12.22",
+    "karma-chrome-launcher": "~0.1.4",
+    "karma-jasmine": "~0.1.5"
+  },
+  "devDependencies": {
+    "vinyl-source-stream": "~0.1.1",
+    "browserify": "~5.10.1",
+    "karma-chrome-launcher": "~0.1.4",
+    "karma-jasmine": "~0.1.5",
+    "gulp-concat": "~2.3.4",
+    "gulp-uglify": "~0.3.1",
+    "gulp": "~3.8.7",
+    "karma": "~0.12.22"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SourceScript/juan-holiday.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/SourceScript/juan-holiday/issues"
+  }
+}

@@ -9,3 +9,4 @@ Thumbs.db
 /app/config/database.php
 /node_modules
 /public/assets/vendor
+/public/assets/js
