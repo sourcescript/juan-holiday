@@ -18,7 +18,10 @@ class Holidays extends Migration {
 			$table->string('name');
 			$table->date('from');
 			$table->date('to')->nullable();
-			$table->enum('type',['regular', 'special non-working', 'holiday for all schools', 'observance', 'common local', 'season']);
+			$table->enum('type',[
+			             'regular', 'special non-working',
+			             'holiday for all schools', 'observance',
+			             'common local', 'season']);
 			$table->timestamps();
 			$table->softDeletes();
 		});

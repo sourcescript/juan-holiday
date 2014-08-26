@@ -151,7 +151,7 @@ class TestSeeder extends Seeder {
 				'from' => '2014-11-01',
 				'to' => '2014-11-01',
 				'type' => 'special non-woring'
-			]);		
+			]);
 
 		Holiday::create([
 				'name' => 'All Souls\' Day',

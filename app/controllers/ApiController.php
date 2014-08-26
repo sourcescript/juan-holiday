@@ -24,7 +24,7 @@ class ApiController extends BaseController {
 
 	/**
 	 * Returns holiday listing
-	 * 
+	 *
 	 * @param  $year
 	 * @param  $month
 	 * @param  $day
@@ -33,6 +33,12 @@ class ApiController extends BaseController {
 	function holidays($year, $month = null, $day = null)
 	{
 		$holidays = $this->holiday->get($year, $month, $day);
+
+		// if no holiday is set try to check for regular holidays on other year
+		if(empty($holidays->toArray())) {
+			$regularHolidays = $this->holiday->getRegularHolidays($year, $month, $day);
+			$holidays = $regularHolidays->merge($holidays);
+		}
 
 		return $this->respond($holidays);
 	}

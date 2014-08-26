@@ -1,16 +1,16 @@
 <?php namespace Juan\Repositories\Holiday;
 
-use Holiday;
+use Holiday, DB;
 
 class EloquentHoliday implements HolidayRepository {
 
 
 	/**
 	 * Gets holidays listings
-	 * 
-	 * @param  $year  
-	 * @param  string $month 
-	 * @param  string $day   
+	 *
+	 * @param  $year
+	 * @param  string $month
+	 * @param  string $day
 	 * @return Holiday
 	 */
 	public function get($year, $month = null, $day = null)
@@ -21,25 +21,63 @@ class EloquentHoliday implements HolidayRepository {
 		$rDay = is_null($day) ? '31' : $day;
 		$day = !is_null($day) ? $day : '01';
 
-		return Holiday::where('from', '>=', $year . '-' . $month . '-' . $day)->where('to', '<=', $year . '-' . $rMonth . '-' . $rDay)->get();
+		return Holiday::where('from', '>=', $year . '-' . $month . '-' . $day)
+			->where('to', '<=', $year . '-' . $rMonth . '-' . $rDay)
+			->get();
+	}
+
+	public function getRegularHolidays($year, $month = null, $day = null)
+	{
+		$rMonth = is_null($month) ? '12' : $month;
+		$month = !is_null($month) ? $month : '01';
+
+		$rDay = is_null($day) ? '31' : $day;
+		$day = !is_null($day) ? $day : '01';
+
+		$holidays = Holiday::whereRaw(DB::raw("DATE_FORMAT(`from`, '%m-%d') >= '$month-$day'"))
+			->whereRaw(DB::raw("DATE_FORMAT(`to`, '%m-%d') <= '$rMonth-$rDay'"))
+			->whereRaw(DB::raw("DATE_FORMAT(`from`, '%Y') <= '$year'"))
+			->where('type', 'regular')
+			->groupBy('name')
+			->get();
+
+		foreach($holidays as $i => $holiday)
+		{
+			$holidays[$i]->to = preg_replace('/^\d{4}/i', $year, $holidays[$i]->to);
+			$holidays[$i]->from = preg_replace('/^\d{4}/i', $year, $holidays[$i]->from);
+		}
+
+		return $holidays;
 	}
 
 	/**
 	 * Returns holidays by range
-	 * 
+	 *
 	 * @param   $from
 	 * @param   $to
 	 * @return Holiday
 	 */
 	public function getByRange($from, $to)
 	{
-		return Holiday::where('from', '>=', $from)->where('to', '<', $to)->get();
+		return Holiday::where('from', '>=', $from)->where('to', '<', $to)
+			->get();
 	}
 
+	public function getRegularHolidaysByRange($from, $to)
+	{
+		$from = preg_replace('/^d{4}/i', '', $from);
+		$to = preg_replace('/^d{4}/i', '', $from);
+
+		$holidays = Holiday::whereRaw(DB::raw("DATE_FORMAT(`from`, '%m-%d') >= '$from'"))
+			->whereRaw(DB::raw("DATE_FORMAT(`to`, '%m-%d') <= '$to'"))
+			->where('type', 'regular')
+			->groupBy('name')
+			->get();
+	}
 
 	/**
 	 * Return all holidays
-	 * 
+	 *
 	 * @return Holiday
 	 */
 	public function all()
@@ -50,7 +88,7 @@ class EloquentHoliday implements HolidayRepository {
 
 	/**
 	 * Get holiday by ID
-	 * 
+	 *
 	 * @param  $id
 	 * @return Holiday
 	 */
@@ -62,12 +100,12 @@ class EloquentHoliday implements HolidayRepository {
 
 	/**
 	 * Creates a holiday
-	 * 
-	 * @param   $name 
-	 * @param   $from 
-	 * @param   $to   
-	 * @param   $type 
-	 * @return  bool    
+	 *
+	 * @param   $name
+	 * @param   $from
+	 * @param   $to
+	 * @param   $type
+	 * @return  bool
 	 */
 	public function create($name, $from, $to, $type)
 	{
@@ -86,12 +124,12 @@ class EloquentHoliday implements HolidayRepository {
 
 	/**
 	 * Updates a holiday
-	 * 
-	 * @param   $id   
-	 * @param   $name 
-	 * @param   $from 
-	 * @param   $to   
-	 * @param   $type 
+	 *
+	 * @param   $id
+	 * @param   $name
+	 * @param   $from
+	 * @param   $to
+	 * @param   $type
 	 * @return  bool
 	 */
 	public function update($id, $name, $from, $to, $type)

@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('jc-IdeaPad-S210'),
+	'local' => array('jc-IdeaPad-S210', 'homestead'),
 
 ));
 
