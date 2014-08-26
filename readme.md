@@ -1,6 +1,10 @@
 Juan Holiday API
 ======
 
+## Usage ##
+
+Head out to the [docs](http://juanholiday.sourcescript.ph/).
+
 ## Developing / Testing ##
 
 ### To run locally: ###
