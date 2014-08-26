@@ -13,14 +13,15 @@ class EloquentHoliday implements HolidayRepository {
 	 * @param  string $day   
 	 * @return Holiday
 	 */
-	public function get($year = null, $month = '01', $day = '01')
+	public function get($year, $month = null, $day = null)
 	{
-		$date 	= date_parse($year . '-' . $month . '-' . $day);
+		$rMonth = is_null($month) ? '12' : $month;
+		$month 	= !is_null($month) ? $month : '01';
 
-		$month 	= $date['month'];
-		$day 	= $date['day'];
+		$rDay = is_null($day) ? '31' : $day;
+		$day = !is_null($day) ? $day : '01';
 
-		return Holiday::where('from', '>=', $year . '-' . $month . '-' . $day)->where('to', '<', ++$year . '-' . $month . '-' . $day)->get();
+		return Holiday::where('from', '>=', $year . '-' . $month . '-' . $day)->where('to', '<=', $year . '-' . $rMonth . '-' . $rDay)->get();
 	}
 
 	/**
