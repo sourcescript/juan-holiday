@@ -23,21 +23,21 @@
 
 		<h3> Usage </h3>
 
-		<p> To obtain a list of holidays, simply make a GET request to: <code>http://papogi.com/v1/api</code> </p>
+		<p> To obtain a list of holidays, simply make a GET request to: <code>http://juanholiday.sourcescript.ph/v1/api</code> </p>
 
 		<div class="row">
 
 			<div class="col-md-6">
 				<h4 class="bold-heading"> By Range </h4>
 				Make a GET request to:
-				<p> <kbd>//papogi.com/?from=&amp;to=</kbd> </p>
+				<p> <kbd>//juanholiday.sourcescript.ph/api/?from=&amp;to=</kbd> </p>
 				<p> <code>from</code> and <code>to</code> must be in format <code>Y-m-d</code> <br /> <small> (e.g., 2014-11-23) </small> </p>
 			</div>
 
 			<div class="col-md-6">
 				<h4 class="bold-heading"> By Y/M/D </h4>
 				Make a GET request to:
-				<p> <kbd>//papogi.com/?year=&amp;month=&amp;day=</kbd> </p>
+				<p> <kbd>//juanholiday.sourcescript.ph/api/{year}/{month}/{day}</kbd> </p>
 				<p> <code>year</code> must be in format <code>YYYY</code> <br /> <small> (e.g., 2014) </small> </p>
 				<p> <code>month</code> can come in <em>any</em> format</p>
 				<p> <code>day</code> <em>must</em> be in number format <br /><small> (e.g., 11) </small> </p>
