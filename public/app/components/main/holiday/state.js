@@ -5,15 +5,18 @@ app.config([
 	function($stateProvider) {
 		var state = {
 			name: 'main.holiday',
-			url: '/holiday',
+			url: 'holiday',
 			data: {
 				pageTitle: 'Manage Holidays'
 			},
-			abstract: true,
-			// resolve: {
-
-			// }
-			templateUrl: '/app/components/main/holiday/template.html'
+			resolve: {
+				holidays: ['HolidaySrvc', function(HolidaySrvc) {
+					var year = new Date().getFullYear();
+					return HolidaySrvc.get(year);
+				}]
+			},
+			templateUrl: '/app/components/main/holiday/template.html',
+			controller: 'HolidayCtrl'
 		};
 
 		$stateProvider.state(state);

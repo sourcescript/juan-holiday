@@ -7,205 +7,205 @@ class TestSeeder extends Seeder {
 		DB::table('holidays')->truncate();
 
 		Holiday::create([
-				'name' => 'Bagong Taon',
-				'from' => '2014-01-01',
-				'to' => '2014-01-01',
+				'title' => 'Bagong Taon',
+				'start' => '2014-01-01',
+				'end' => '2014-01-01',
 				'type' => 'regular'
 			]);
 
 		Holiday::create([
-				'name' => 'Maulid un-Nabi',
-				'from' => '2014-01-14',
-				'to' => '2014-01-14',
+				'title' => 'Maulid un-Nabi',
+				'start' => '2014-01-14',
+				'end' => '2014-01-14',
 				'type' => 'common local'
 			]);
 
 		Holiday::create([
-				'name' => 'Chinese Lunar New Year\'s Day',
-				'from' => '2014-01-31',
-				'to' => '2014-01-31',
+				'title' => 'Chinese Lunar New Year\'s Day',
+				'start' => '2014-01-31',
+				'end' => '2014-01-31',
 				'type' => 'special non-working'
 			]);
 
 		Holiday::create([
-				'name' => 'People Power Anniversary',
-				'from' => '2014-02-25',
-				'to' => '2014-02-25',
+				'title' => 'People Power Anniversary',
+				'start' => '2014-02-25',
+				'end' => '2014-02-25',
 				'type' => 'observance'
 			]);
 
 		Holiday::create([
-				'name' => 'March equinox',
-				'from' => '2014-03-20',
-				'to' => '2014-01-01',
+				'title' => 'March equinox',
+				'start' => '2014-03-20',
+				'end' => '2014-01-01',
 				'type' => 'season'
 			]);
 
 		Holiday::create([
-				'name' => 'The Day of Valor',
-				'from' => '2014-04-09',
-				'to' => '2014-04-09',
+				'title' => 'The Day of Valor',
+				'start' => '2014-04-09',
+				'end' => '2014-04-09',
 				'type' => 'regular'
 			]);
 
 		Holiday::create([
-				'name' => 'Maundy Thursday',
-				'from' => '2014-04-17',
-				'to' => '2014-04-17',
+				'title' => 'Maundy Thursday',
+				'start' => '2014-04-17',
+				'end' => '2014-04-17',
 				'type' => 'regular'
 			]);
 
 		Holiday::create([
-				'name' => 'Good Friday',
-				'from' => '2014-04-19',
-				'to' => '2014-04-19',
+				'title' => 'Good Friday',
+				'start' => '2014-04-19',
+				'end' => '2014-04-19',
 				'type' => 'special non-working'
 			]);
 
 		Holiday::create([
-				'name' => 'Easter Sunday',
-				'from' => '2014-04-20',
-				'to' => '2014-01-01',
+				'title' => 'Easter Sunday',
+				'start' => '2014-04-20',
+				'end' => '2014-01-01',
 				'type' => 'observance'
 			]);
 
 		Holiday::create([
-				'name' => 'Labor Day',
-				'from' => '2014-05-01',
-				'to' => '2014-05-01',
+				'title' => 'Labor Day',
+				'start' => '2014-05-01',
+				'end' => '2014-05-01',
 				'type' => 'regular'
 			]);
 
 		Holiday::create([
-				'name' => 'Lailatul Isra Wal Raj',
-				'from' => '2014-05-27',
-				'to' => '2014-05-27',
+				'title' => 'Lailatul Isra Wal Raj',
+				'start' => '2014-05-27',
+				'end' => '2014-05-27',
 				'type' => 'regular'
 			]);
 
 		Holiday::create([
-				'name' => 'Independence Day',
-				'from' => '2014-06-12',
-				'to' => '2014-06-12',
+				'title' => 'Independence Day',
+				'start' => '2014-06-12',
+				'end' => '2014-06-12',
 				'type' => 'common local'
 			]);
 
 		Holiday::create([
-				'name' => 'June Solstice',
-				'from' => '2014-06-21',
-				'to' => '2014-06-21',
+				'title' => 'June Solstice',
+				'start' => '2014-06-21',
+				'end' => '2014-06-21',
 				'type' => 'season'
 			]);
 
 		Holiday::create([
-				'name' => 'Eidul-Fitar',
-				'from' => '2014-07-29',
-				'to' => '2014-07-29',
+				'title' => 'Eidul-Fitar',
+				'start' => '2014-07-29',
+				'end' => '2014-07-29',
 				'type' => 'common local'
 			]);
 
 		Holiday::create([
-				'name' => 'Ninoy Aquino Day',
-				'from' => '2014-08-21',
-				'to' => '2014-08-21',
+				'title' => 'Ninoy Aquino Day',
+				'start' => '2014-08-21',
+				'end' => '2014-08-21',
 				'type' => 'special non-working'
 			]);
 
 		Holiday::create([
-				'name' => 'National Heroes Day',
-				'from' => '2014-08-24',
-				'to' => '2014-08-24',
+				'title' => 'National Heroes Day',
+				'start' => '2014-08-24',
+				'end' => '2014-08-24',
 				'type' => 'regular'
 			]);
 
 		Holiday::create([
-				'name' => 'National Heroes Day Holiday',
-				'from' => '2014-08-25',
-				'to' => '2014-08-25',
+				'title' => 'National Heroes Day Holiday',
+				'start' => '2014-08-25',
+				'end' => '2014-08-25',
 				'type' => 'regular'
 			]);
 
 		Holiday::create([
-				'name' => 'September equinox',
-				'from' => '2014-09-23',
-				'to' => '2014-09-23',
+				'title' => 'September equinox',
+				'start' => '2014-09-23',
+				'end' => '2014-09-23',
 				'type' => 'season'
 			]);
 
 		Holiday::create([
-				'name' => 'Id-ul-Adha (Feast of the Sacrifice)',
-				'from' => '2014-10-04',
-				'to' => '2014-10-04',
+				'title' => 'Id-ul-Adha (Feast of the Sacrifice)',
+				'start' => '2014-10-04',
+				'end' => '2014-10-04',
 				'type' => 'common local'
 			]);
 
 		Holiday::create([
-				'name' => 'Amun Jadid',
-				'from' => '2014-10-25',
-				'to' => '2014-10-25',
+				'title' => 'Amun Jadid',
+				'start' => '2014-10-25',
+				'end' => '2014-10-25',
 				'type' => 'common local'
 			]);
 
 		Holiday::create([
-				'name' => 'All Saints\' Day',
-				'from' => '2014-11-01',
-				'to' => '2014-11-01',
+				'title' => 'All Saints\' Day',
+				'start' => '2014-11-01',
+				'end' => '2014-11-01',
 				'type' => 'special non-woring'
 			]);		
 
 		Holiday::create([
-				'name' => 'All Souls\' Day',
-				'from' => '2014-11-02',
-				'to' => '2014-11-02',
+				'title' => 'All Souls\' Day',
+				'start' => '2014-11-02',
+				'end' => '2014-11-02',
 				'type' => 'observance'
 			]);
 
 		Holiday::create([
-				'name' => 'Bonifacio Day',
-				'from' => '2014-11-33',
-				'to' => '2014-11-30',
+				'title' => 'Bonifacio Day',
+				'start' => '2014-11-33',
+				'end' => '2014-11-30',
 				'type' => 'regular'
 			]);
 
 		Holiday::create([
-				'name' => 'December Solstice',
-				'from' => '2014-12-21',
-				'to' => '2014-12-21',
+				'title' => 'December Solstice',
+				'start' => '2014-12-21',
+				'end' => '2014-12-21',
 				'type' => 'regular'
 			]);
 
 		Holiday::create([
-				'name' => 'Christmas Eve',
-				'from' => '2014-12-24',
-				'to' => '2014-12-24',
+				'title' => 'Christmas Eve',
+				'start' => '2014-12-24',
+				'end' => '2014-12-24',
 				'type' => 'special non-working'
 			]);
 
 		Holiday::create([
-				'name' => 'Christmas Day',
-				'from' => '2014-12-25',
-				'to' => '2014-12-25',
+				'title' => 'Christmas Day',
+				'start' => '2014-12-25',
+				'end' => '2014-12-25',
 				'type' => 'regular'
 			]);
 
 		Holiday::create([
-				'name' => 'Special Day after Christmas',
-				'from' => '2014-01-01',
-				'to' => '2014-01-01',
+				'title' => 'Special Day after Christmas',
+				'start' => '2014-01-01',
+				'end' => '2014-01-01',
 				'type' => 'special non-working'
 			]);
 
 		Holiday::create([
-				'name' => 'Rizal Day',
-				'from' => '2014-12-30',
-				'to' => '2014-12-30',
+				'title' => 'Rizal Day',
+				'start' => '2014-12-30',
+				'end' => '2014-12-30',
 				'type' => 'regular'
 			]);
 
 		Holiday::create([
-				'name' => 'New Year\'s Eve',
-				'from' => '2014-12-31',
-				'to' => '2014-12-31',
+				'title' => 'New Year\'s Eve',
+				'start' => '2014-12-31',
+				'end' => '2014-12-31',
 				'type' => 'special non-working'
 			]);
 	}

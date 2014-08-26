@@ -16,12 +16,7 @@ var
 	 * 
 	 */
 	dirs = require('./components/dirs'),
-
-	/**
-	 * 
-	 */
-	ctrls = require('./components/ctrls'),
-
+	
 	/**
 	 * 
 	 */

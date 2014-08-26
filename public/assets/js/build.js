@@ -17,12 +17,7 @@ var
 	 * 
 	 */
 	dirs = require('./components/dirs'),
-
-	/**
-	 * 
-	 */
-	ctrls = require('./components/ctrls'),
-
+	
 	/**
 	 * 
 	 */
@@ -33,7 +28,7 @@ var
 	 */
 	bootstrapper = require('./bootstrapper');
 	bootstrapper();
-},{"./app":2,"./bootstrapper":3,"./components/_modules":4,"./components/ctrls":5,"./components/dirs":6,"./components/srvcs":12,"./components/utils":13}],2:[function(require,module,exports){
+},{"./app":2,"./bootstrapper":3,"./components/_modules":4,"./components/dirs":5,"./components/srvcs":13,"./components/utils":14}],2:[function(require,module,exports){
 var app = angular.module('app', ['ui.router', 'ui.calendar']);
 
 module.exports = app;
@@ -72,12 +67,16 @@ var
 	/**
 	 * 
 	 */
-	home_state = require('./main/home/state');
-},{"./login/ctrl":7,"./login/state":8,"./logout/state":9,"./main/home/state":10,"./main/state":11}],5:[function(require,module,exports){
+	home_state = require('./main/home/state'),
+
+	/**
+	 * 
+	 */
+	holiday_ctrl  = require('./main/holiday/ctrl'),
+	holiday_state = require('./main/holiday/state');
+},{"./login/ctrl":6,"./login/state":7,"./logout/state":8,"./main/holiday/ctrl":9,"./main/holiday/state":10,"./main/home/state":11,"./main/state":12}],5:[function(require,module,exports){
 
 },{}],6:[function(require,module,exports){
-module.exports=require(5)
-},{}],7:[function(require,module,exports){
 var app = require('../../app');
 
 app.controller('LoginCtrl', [
@@ -124,7 +123,7 @@ app.controller('LoginCtrl', [
 		}
 	}
 ]);
-},{"../../app":2}],8:[function(require,module,exports){
+},{"../../app":2}],7:[function(require,module,exports){
 var app = require('../../app');
 
 app.config([
@@ -148,7 +147,7 @@ app.config([
 		$stateProvider.state(state);
 	}
 ]);
-},{"../../app":2}],9:[function(require,module,exports){
+},{"../../app":2}],8:[function(require,module,exports){
 var app = require('../../app');
 
 app.config([
@@ -174,7 +173,56 @@ app.config([
 		$stateProvider.state(state);
 	}
 ]);
-},{"../../app":2}],10:[function(require,module,exports){
+},{"../../app":2}],9:[function(require,module,exports){
+var app = require('../../../app');
+
+app.controller('HolidayCtrl', [
+	'$scope',
+	'HolidaySrvc',
+	function($scope, HolidaySrvc) {
+		$scope.holidays = HolidaySrvc.data;
+
+		// ui-calendar config | object
+		$scope.calendar = {
+			config: {
+				height: 450,
+				editable: true,
+				header: {
+
+				},
+				dayClick: $scope.alertEventOnClick,
+				eventDrop: $scope.alertOnDrop,
+				eventResize: $scope.alertOnResize
+			}
+		};
+	}
+]);
+},{"../../../app":2}],10:[function(require,module,exports){
+var app = require('../../../app');
+
+app.config([
+	'$stateProvider',
+	function($stateProvider) {
+		var state = {
+			name: 'main.holiday',
+			url: 'holiday',
+			data: {
+				pageTitle: 'Manage Holidays'
+			},
+			resolve: {
+				holidays: ['HolidaySrvc', function(HolidaySrvc) {
+					var year = new Date().getFullYear();
+					return HolidaySrvc.get(year);
+				}]
+			},
+			templateUrl: '/app/components/main/holiday/template.html',
+			controller: 'HolidayCtrl'
+		};
+
+		$stateProvider.state(state);
+	}
+]);
+},{"../../../app":2}],11:[function(require,module,exports){
 var app = require('../../../app');
 
 app.config([
@@ -195,7 +243,7 @@ app.config([
 		$stateProvider.state(state);
 	}
 ]);
-},{"../../../app":2}],11:[function(require,module,exports){
+},{"../../../app":2}],12:[function(require,module,exports){
 var app = require('../../app');
 
 app.config([
@@ -211,17 +259,23 @@ app.config([
 		$stateProvider.state(state);
 	}
 ]);
-},{"../../app":2}],12:[function(require,module,exports){
+},{"../../app":2}],13:[function(require,module,exports){
 var 
 
-	auth	= require('../srvc/auth');
-},{"../srvc/auth":14}],13:[function(require,module,exports){
+	auth	= require('../srvc/auth'),
+	holiday = require('../srvc/holiday');
+},{"../srvc/auth":15,"../srvc/holiday":16}],14:[function(require,module,exports){
 var
 
 	/**
 	 * accessibility
 	 */
 	accessibility = require('../utils/accessibility'),
+
+	/**
+	 * location
+	 */
+	html5 = require('../utils/html5'),
 
 	/**
 	 * constants
@@ -232,7 +286,7 @@ var
 	 * states
 	 */
 	missing = require('../utils/states/missing');
-},{"../utils/accessibility":15,"../utils/constants/apiv1":16,"../utils/states/missing":17}],14:[function(require,module,exports){
+},{"../utils/accessibility":17,"../utils/constants/apiv1":18,"../utils/html5":19,"../utils/states/missing":20}],15:[function(require,module,exports){
 var app = require('../app');
 
 app.factory('AuthSrvc', [
@@ -317,7 +371,51 @@ app.factory('AuthSrvc', [
 		return srvc;
 	}
 ]);
-},{"../app":2}],15:[function(require,module,exports){
+},{"../app":2}],16:[function(require,module,exports){
+var app = require('../app');
+
+app.factory('HolidaySrvc', [
+	'$q',
+	'$http',
+	'$window',
+	'APIv1',
+	function($q, $http, $window, APIv1) {
+		var service = {
+			/**
+			 * Array of dates
+			 * @type {Array}
+			 */
+			data: [],
+
+			/**
+			 * Fetches all holidays with the given year
+			 * @return {$q} {promise}
+			 */
+			get: function(year) {
+				var q 		= $q.defer(),
+					// url 	= $window.location.origin + '/api/' + year,
+					url 	= APIv1.holiday.index(year),
+					request = $http.get(url);
+					
+				request
+					.success( (function(_this) {
+						return function(res) {
+							_this.data.push(res);
+							q.resolve();
+						};
+					})(this) )
+					.error(function() {
+						// q.reject();
+					});
+
+				return q.promise;
+			}
+		};
+
+		return service;
+	}
+]);
+},{"../app":2}],17:[function(require,module,exports){
 var app = require('../app');
 
 app.run([
@@ -329,7 +427,7 @@ app.run([
 		$rootScope.$stateParams = $stateParams;
 	}
 ]);
-},{"../app":2}],16:[function(require,module,exports){
+},{"../app":2}],18:[function(require,module,exports){
 var app = require('../../app');
 
 /**
@@ -341,7 +439,7 @@ app.constant('APIv1', (function() {
 	 * Base URL
 	 * @type {String}
 	 */
-	var base = '/api/v1/',
+	var base = window.location.origin + '/api/',
 
 	/**
 	 * API object
@@ -362,10 +460,25 @@ app.constant('APIv1', (function() {
 	 * 
 	 */
 	api.holiday = {};
+	api.holiday.index = function(year) {
+		return base + year;
+	}
 
 	return api;
-}()));
-},{"../../app":2}],17:[function(require,module,exports){
+})());
+},{"../../app":2}],19:[function(require,module,exports){
+var app = require('../app');
+
+/**
+ * Activate HTML 5 mode
+ */
+app.config([
+	'$locationProvider',
+	function($locationProvider) {
+		$locationProvider.html5Mode(true);
+	}
+]);
+},{"../app":2}],20:[function(require,module,exports){
 var app = require('../../app');
 
 app.config([

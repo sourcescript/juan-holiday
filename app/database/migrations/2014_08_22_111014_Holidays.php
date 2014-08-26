@@ -15,9 +15,9 @@ class Holidays extends Migration {
 		Schema::create('holidays', function($table)
 		{
 			$table->increments('id');
-			$table->string('name');
-			$table->date('from');
-			$table->date('to')->nullable();
+			$table->string('title');
+			$table->date('start');
+			$table->date('end')->nullable();
 			$table->enum('type',['regular', 'special non-working', 'holiday for all schools', 'observance', 'common local', 'season']);
 			$table->timestamps();
 			$table->softDeletes();

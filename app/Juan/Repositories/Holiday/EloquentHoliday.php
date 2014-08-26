@@ -21,7 +21,7 @@ class EloquentHoliday implements HolidayRepository {
 		$rDay = is_null($day) ? '31' : $day;
 		$day = !is_null($day) ? $day : '01';
 
-		return Holiday::where('from', '>=', $year . '-' . $month . '-' . $day)->where('to', '<=', $year . '-' . $rMonth . '-' . $rDay)->get();
+		return Holiday::where('start', '>=', $year . '-' . $month . '-' . $day)->where('end', '<=', $year . '-' . $rMonth . '-' . $rDay)->get();
 	}
 
 	/**
@@ -33,7 +33,7 @@ class EloquentHoliday implements HolidayRepository {
 	 */
 	public function getByRange($from, $to)
 	{
-		return Holiday::where('from', '>=', $from)->where('to', '<', $to)->get();
+		return Holiday::where('start', '>=', $from)->where('end', '<', $to)->get();
 	}
 
 

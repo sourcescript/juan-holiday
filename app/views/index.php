@@ -10,7 +10,7 @@
 	<link href="/assets/vendor/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css">
 	<link href="/assets/vendor/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css" media="print">
 
-	<base href="/panel">
+	<base href="/panel/">
 </head>
 
 <body>

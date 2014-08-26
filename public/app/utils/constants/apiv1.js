@@ -9,7 +9,7 @@ app.constant('APIv1', (function() {
 	 * Base URL
 	 * @type {String}
 	 */
-	var base = '/api/v1/',
+	var base = window.location.origin + '/api/',
 
 	/**
 	 * API object
@@ -30,6 +30,9 @@ app.constant('APIv1', (function() {
 	 * 
 	 */
 	api.holiday = {};
+	api.holiday.index = function(year) {
+		return base + year;
+	}
 
 	return api;
-}()));
+})());

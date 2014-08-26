@@ -19,4 +19,10 @@ var
 	/**
 	 * 
 	 */
-	home_state = require('./main/home/state');
+	home_state = require('./main/home/state'),
+
+	/**
+	 * 
+	 */
+	holiday_ctrl  = require('./main/holiday/ctrl'),
+	holiday_state = require('./main/holiday/state');
