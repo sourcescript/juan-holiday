@@ -54,7 +54,7 @@
 		By default, a JSON would be given as response.
 
 		<footer>
-			Made with <i class="glyphicon glyphicon-heart heart"></i> by <span class="sourcescript">SourceScript</span>.
+			Made with <i class="glyphicon glyphicon-heart heart"></i> by <a href="//sourcescript.ph" class="sourcescript"> SourceScript </a>.
 		</footer>
 
 	</div>

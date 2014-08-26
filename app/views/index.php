@@ -7,8 +7,10 @@
 	<!-- stylesheets -->
 	<link href="/assets/css/panel.css" rel="stylesheet" type="text/css">
 	<link href="/assets/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="/assets/vendor/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css">
+	<link href="/assets/vendor/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css" media="print">
 
-	<base href="/panel/">
+	<base href="/panel">
 </head>
 
 <body>

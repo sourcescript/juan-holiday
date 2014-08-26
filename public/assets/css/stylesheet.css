@@ -13,6 +13,11 @@
 	font-weight: bold;
 }
 
+.sourcescript:hover {
+	color: #99CC00;
+	text-decoration: none;
+}
+
 .bold-heading {
 	font-weight: bold;
 }
