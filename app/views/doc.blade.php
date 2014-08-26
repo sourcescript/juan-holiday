@@ -60,7 +60,7 @@
 	</div>
 
 	<!-- scripts -->
-	<script src="public/assets/vendor/jquery/dist/jquery.min.js"></script>
-	<script src="public/assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
+	<script src="/assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
