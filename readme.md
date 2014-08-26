@@ -1,6 +1,8 @@
 Juan Holiday API
 ======
 
+A holiday API for the Philippines 
+
 ## Usage ##
 
 Head out to the [docs](http://juanholiday.sourcescript.ph/).
