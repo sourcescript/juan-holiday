@@ -7,7 +7,7 @@ interface HolidayRepository {
 	public function getByRange($from, $to);
 
 	public function all();
-	
+
 	public function getById($id);
 
 	public function update($id, $name, $from, $to, $type);
