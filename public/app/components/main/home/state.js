@@ -5,7 +5,7 @@ app.config([
 	function($stateProvider) {
 		var state =  {
 			name: 'main.home',
-			url: '',
+			url: '/',
 			templateUrl: '/app/components/main/home/template.html',
 			data: {
 				pageTitle: 'Dashboard'
