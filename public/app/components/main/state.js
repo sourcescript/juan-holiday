@@ -6,7 +6,6 @@ app.config([
 		var state = {
 			name: 'main',
 			abstract: true,
-			url: '/',
 			templateUrl: '/app/components/main/template.html'
 		};
 
